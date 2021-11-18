@@ -8,14 +8,14 @@ import java.io.Serializable;
 
 //Se crea el paquete de model donde esta creado el cinema
 public class Cinema implements Serializable {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String owner;
-    private Integer capacity;
-    private Integer category_id;
     private String name;
+    private Integer capacity;
+    private String description;
+    private Integer category;
 
     public Integer getId() {
         return id;
@@ -33,6 +33,14 @@ public class Cinema implements Serializable {
         this.owner = owner;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public Integer getCapacity() {
         return capacity;
     }
@@ -41,19 +49,19 @@ public class Cinema implements Serializable {
         this.capacity = capacity;
     }
 
-    public Integer getCategory_id() {
-        return category_id;
+    public String getDescription() {
+        return description;
     }
 
-    public void setCategory_id(Integer category_id) {
-        this.category_id = category_id;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public String getName() {
-        return name;
+    public Integer getCategory() {
+        return category;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setCategory(Integer category) {
+        this.category = category;
     }
 }
