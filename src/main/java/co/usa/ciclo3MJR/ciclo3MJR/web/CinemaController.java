@@ -14,7 +14,7 @@ import java.util.Optional;
 @RequestMapping("/api/Cinema")
 @CrossOrigin(origins = "*",methods = {RequestMethod.GET,RequestMethod.POST,RequestMethod.PUT,RequestMethod.DELETE})
 
-public class PapeleriaController {
+public class CinemaController {
 
     @Autowired
     private CinemaService cinemaService;
