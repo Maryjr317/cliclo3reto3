@@ -1,5 +1,7 @@
 package co.usa.ciclo3MJR.ciclo3MJR.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -16,6 +18,13 @@ public class Cinema implements Serializable {
     private Integer capacity;
     private String description;
     private Integer category;
+
+    @ManyToOne
+    @JoinColumn(name = "categoriaId")
+    //Se ignora el campo cinemas
+    @JsonIgnoreProperties("cinemas")
+
+    private Categoria categoria;
 
     public Integer getId() {
         return id;
@@ -63,5 +72,13 @@ public class Cinema implements Serializable {
 
     public void setCategory(Integer category) {
         this.category = category;
+    }
+
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
     }
 }
