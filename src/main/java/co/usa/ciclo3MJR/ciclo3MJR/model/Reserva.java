@@ -17,7 +17,7 @@ public class Reserva {
     private Date startDate;
     private Date devolutionDate;
 
-    @ManyToOne
+/*    @ManyToOne
     @JoinColumn(name = "id")
     @JsonIgnoreProperties({"reservas"})
     private Cinema cinema;
@@ -25,7 +25,17 @@ public class Reserva {
     @ManyToOne
     @JoinColumn(name = "idClient")
     @JsonIgnoreProperties({"Reservas", "Mensajes"})
-    private Client client;
+    private Client client;*/
+
+    @ManyToOne
+    @JoinColumn(name = "id")
+    @JsonIgnoreProperties({"reservations"})
+    private Cinema cinema;
+
+    @ManyToOne
+    @JoinColumn(name = "idClient")
+    @JsonIgnoreProperties({"reservations", "messages"})
+    private Cliente cliente;
 
     public Integer getId() {
         return id;
@@ -59,11 +69,11 @@ public class Reserva {
         this.cinema = cinema;
     }
 
-    public Client getClient() {
-        return client;
+    public Cliente getCliente() {
+        return cliente;
     }
 
-    public void setClient(Client client) {
-        this.client = client;
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 }

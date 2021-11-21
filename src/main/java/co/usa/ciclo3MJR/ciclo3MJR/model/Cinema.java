@@ -20,7 +20,7 @@ public class Cinema implements Serializable {
     private String description;
     private Integer category;
 
-    @ManyToOne
+/*    @ManyToOne
     @JoinColumn(name = "categoriaId")
     //Se ignora el campo cinemas
     @JsonIgnoreProperties("Cinemas")
@@ -32,6 +32,18 @@ public class Cinema implements Serializable {
 
     @OneToMany(cascade={CascadeType.PERSIST},mappedBy = "cinema")
     @JsonIgnoreProperties({"Cinemas","Mensajes"})
+    private List<Reserva> reservas;*/
+
+    @JoinColumn(name="categoriaId")
+    @JsonIgnoreProperties("cinemas")
+    private Categoria categoria;
+
+    @OneToMany(cascade={CascadeType.PERSIST},mappedBy = "cinema")
+    @JsonIgnoreProperties({"cinema","client"})
+    private List<Mensaje> mensajes;
+
+    @OneToMany(cascade={CascadeType.PERSIST},mappedBy = "cinema")
+    @JsonIgnoreProperties({"cinema","message"})
     private List<Reserva> reservas;
 
     public Integer getId() {

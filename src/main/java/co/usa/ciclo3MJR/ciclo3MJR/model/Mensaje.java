@@ -15,7 +15,7 @@ public class Mensaje {
     private Integer id;
     private String messageText;
 
-    @ManyToOne
+/*    @ManyToOne
     @JoinColumn(name = "id")
     @JsonIgnoreProperties({"mensajes", "reservas"})
     private Cinema cinema;
@@ -23,7 +23,17 @@ public class Mensaje {
     @ManyToOne
     @JoinColumn(name = "clientId")
     @JsonIgnoreProperties({"mensajes", "reservas"})
-    private Cliente clients;
+    private Cliente clients;*/
+
+    @ManyToOne
+    @JoinColumn(name = "id")
+    @JsonIgnoreProperties({"messages", "reservations"})
+    private Cinema cinema;
+
+    @ManyToOne
+    @JoinColumn(name = "clientId")
+    @JsonIgnoreProperties({"messages", "reservations"})
+    private Cliente client;
 
     public Integer getId() {
         return id;
@@ -49,11 +59,11 @@ public class Mensaje {
         this.cinema = cinema;
     }
 
-    public Cliente getClients() {
-        return clients;
+    public Cliente getClient() {
+        return client;
     }
 
-    public void setClients(Cliente clients) {
-        this.clients = clients;
+    public void setClient(Cliente client) {
+        this.client = client;
     }
 }
