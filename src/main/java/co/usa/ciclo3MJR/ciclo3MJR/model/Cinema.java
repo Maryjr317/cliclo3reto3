@@ -27,7 +27,7 @@ public class Cinema implements Serializable {
     private Categoria categoria;
 
     @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "cinema")
-    @JsonIgnoreProperties({"Cinemas","Clients"})
+    @JsonIgnoreProperties({"Cinemas","Clientes"})
     public List<Mensaje> mensajes;
 
     @OneToMany(cascade={CascadeType.PERSIST},mappedBy = "cinema")

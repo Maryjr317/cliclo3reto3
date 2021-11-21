@@ -40,4 +40,20 @@ public class Mensaje {
     public void setMessageText(String messageText) {
         this.messageText = messageText;
     }
+
+    public Cinema getCinema() {
+        return cinema;
+    }
+
+    public void setCinema(Cinema cinema) {
+        this.cinema = cinema;
+    }
+
+    public Cliente getClients() {
+        return clients;
+    }
+
+    public void setClients(Cliente clients) {
+        this.clients = clients;
+    }
 }

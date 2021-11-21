@@ -50,4 +50,20 @@ public class Reserva {
     public void setDevolutionDate(Date devolutionDate) {
         this.devolutionDate = devolutionDate;
     }
+
+    public Cinema getCinema() {
+        return cinema;
+    }
+
+    public void setCinema(Cinema cinema) {
+        this.cinema = cinema;
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
 }
