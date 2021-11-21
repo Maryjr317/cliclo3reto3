@@ -19,12 +19,12 @@ public class Cliente implements Serializable {
     private String password;
     private Integer age;
 
-    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "client")
-    @JsonIgnoreProperties("clientes")
+    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "Cliente")
+    @JsonIgnoreProperties("Clientes")
     public List<Cliente> clientes;
 
-    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "client")
-    @JsonIgnoreProperties("clientes")
+    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "Cliente")
+    @JsonIgnoreProperties("Clientes")
     public List<Reserva> reservas;
 
     public Integer getId() {

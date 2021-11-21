@@ -24,7 +24,7 @@ public class Reserva {
 
     @ManyToOne
     @JoinColumn(name = "idClient")
-    @JsonIgnoreProperties({"reservas", "mensajes"})
+    @JsonIgnoreProperties({"Reservas", "Mensajes"})
     private Client client;
 
     public Integer getId() {
