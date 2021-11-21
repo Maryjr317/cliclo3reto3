@@ -22,8 +22,6 @@ public class Categoria implements Serializable {
     @JsonIgnoreProperties("categoria")
     private List<Cinema> cinemas;
 
-
-
     public Integer getId() {
         return id;
     }

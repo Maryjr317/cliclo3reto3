@@ -26,8 +26,6 @@ public class Reserva {
     @JsonIgnoreProperties("reserva")
     private List<Cinema> cinemasrc;
 
-
-
     public Integer getId() {
         return id;
     }
@@ -52,19 +50,19 @@ public class Reserva {
         this.devolutionDate = devolutionDate;
     }
 
-    public Cinema getCinema() {
-        return cinema;
+    public List<Cinema> getCinemasr() {
+        return cinemasr;
     }
 
-    public void setCinema(Cinema cinema) {
-        this.cinema = cinema;
+    public void setCinemasr(List<Cinema> cinemasr) {
+        this.cinemasr = cinemasr;
     }
 
-    public Cliente getCliente() {
-        return cliente;
+    public List<Cinema> getCinemasrc() {
+        return cinemasrc;
     }
 
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
+    public void setCinemasrc(List<Cinema> cinemasrc) {
+        this.cinemasrc = cinemasrc;
     }
 }

@@ -23,8 +23,6 @@ public class Mensaje {
     @JsonIgnoreProperties("mensaje")
     private List<Cinema> cinemasmc;
 
-
-
     public Integer getId() {
         return id;
     }
@@ -41,19 +39,19 @@ public class Mensaje {
         this.messageText = messageText;
     }
 
-    public Cinema getCinema() {
-        return cinema;
+    public List<Cinema> getCinemasm() {
+        return cinemasm;
     }
 
-    public void setCinema(Cinema cinema) {
-        this.cinema = cinema;
+    public void setCinemasm(List<Cinema> cinemasm) {
+        this.cinemasm = cinemasm;
     }
 
-    public Cliente getClient() {
-        return client;
+    public List<Cinema> getCinemasmc() {
+        return cinemasmc;
     }
 
-    public void setClient(Cliente client) {
-        this.client = client;
+    public void setCinemasmc(List<Cinema> cinemasmc) {
+        this.cinemasmc = cinemasmc;
     }
 }

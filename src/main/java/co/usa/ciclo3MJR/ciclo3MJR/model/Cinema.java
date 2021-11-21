@@ -97,19 +97,19 @@ public class Cinema implements Serializable {
         this.categoria = categoria;
     }
 
-    public List<Mensaje> getMensajes() {
-        return mensajes;
+    public Mensaje getMensaje() {
+        return mensaje;
     }
 
-    public void setMensajes(List<Mensaje> mensajes) {
-        this.mensajes = mensajes;
+    public void setMensaje(Mensaje mensaje) {
+        this.mensaje = mensaje;
     }
 
-    public List<Reserva> getReservas() {
-        return reservas;
+    public Reserva getReserva() {
+        return reserva;
     }
 
-    public void setReservas(List<Reserva> reservas) {
-        this.reservas = reservas;
+    public void setReserva(Reserva reserva) {
+        this.reserva = reserva;
     }
 }
