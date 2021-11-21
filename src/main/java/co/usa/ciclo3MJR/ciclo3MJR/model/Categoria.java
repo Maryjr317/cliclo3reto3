@@ -17,10 +17,9 @@ public class Categoria implements Serializable {
     private String name;
     private String description;
 
-    @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "categoria")
-    //Cuando desde categoria muestre los cinemas no loa muestre categoria
-    @JsonIgnoreProperties("categoria")
-    public List<Cinema> cinemas;
+    @OneToMany(cascade = {CascadeType.PERSIST},mappedBy ="categoria")
+    @JsonIgnoreProperties({"categorias", "mensajes"})
+    private List<Cinema> cinemas;
 
     public Integer getId() {
         return id;

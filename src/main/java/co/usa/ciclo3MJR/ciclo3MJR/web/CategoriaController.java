@@ -21,7 +21,7 @@ public class CategoriaController {
 
     //Metodo get para obtener todos los elementos con su url
     @GetMapping("/all")
-    public List<Categoria> getCategorias(){
+    public List<Categoria> getCategoria(){
         return categoriaService.getAll();
     }
 
