@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "reserva")
@@ -17,25 +18,15 @@ public class Reserva {
     private Date startDate;
     private Date devolutionDate;
 
-/*    @ManyToOne
-    @JoinColumn(name = "id")
-    @JsonIgnoreProperties({"reservas"})
-    private Cinema cinema;
+    @OneToMany(cascade = {CascadeType.PERSIST},mappedBy ="reserva")
+    @JsonIgnoreProperties("reserva")
+    private List<Cinema> cinemasr;
 
-    @ManyToOne
-    @JoinColumn(name = "idClient")
-    @JsonIgnoreProperties({"Reservas", "Mensajes"})
-    private Client client;*/
+    @OneToMany(cascade = {CascadeType.PERSIST},mappedBy ="reserva")
+    @JsonIgnoreProperties("reserva")
+    private List<Cinema> cinemasrc;
 
-    @ManyToOne
-    @JoinColumn(name = "id")
-    @JsonIgnoreProperties({"reservations"})
-    private Cinema cinema;
 
-    @ManyToOne
-    @JoinColumn(name = "idClient")
-    @JsonIgnoreProperties({"reservations", "messages"})
-    private Cliente cliente;
 
     public Integer getId() {
         return id;

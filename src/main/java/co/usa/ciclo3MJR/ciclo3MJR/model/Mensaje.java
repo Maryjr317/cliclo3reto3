@@ -15,25 +15,15 @@ public class Mensaje {
     private Integer id;
     private String messageText;
 
-/*    @ManyToOne
-    @JoinColumn(name = "id")
-    @JsonIgnoreProperties({"mensajes", "reservas"})
-    private Cinema cinema;
+    @OneToMany(cascade = {CascadeType.PERSIST},mappedBy ="mensaje")
+    @JsonIgnoreProperties("mensaje")
+    private List<Cinema> cinemasm;
 
-    @ManyToOne
-    @JoinColumn(name = "clientId")
-    @JsonIgnoreProperties({"mensajes", "reservas"})
-    private Cliente clients;*/
+    @OneToMany(cascade = {CascadeType.PERSIST},mappedBy ="mensaje")
+    @JsonIgnoreProperties("mensaje")
+    private List<Cinema> cinemasmc;
 
-    @ManyToOne
-    @JoinColumn(name = "id")
-    @JsonIgnoreProperties({"messages", "reservations"})
-    private Cinema cinema;
 
-    @ManyToOne
-    @JoinColumn(name = "clientId")
-    @JsonIgnoreProperties({"messages", "reservations"})
-    private Cliente client;
 
     public Integer getId() {
         return id;

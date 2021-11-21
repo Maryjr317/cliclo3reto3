@@ -20,7 +20,7 @@ public class ReservaController {
 
     //Metodo get para obtener todos los elementos con su url
     @GetMapping("/all")
-    public List<Reserva> getReserva(){
+    public List<Reserva> getReservas(){
         return reservaService.getAll();
     }
 

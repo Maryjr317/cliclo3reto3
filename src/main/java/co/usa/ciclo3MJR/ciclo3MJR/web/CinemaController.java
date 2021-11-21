@@ -21,7 +21,7 @@ public class CinemaController {
 
     //Metodo get para obtener todos los elementos con su url
     @GetMapping("/all")
-    public List<Cinema> getCinema(){
+    public List<Cinema> getCinemas(){
         return cinemaService.getAll();
     }
 

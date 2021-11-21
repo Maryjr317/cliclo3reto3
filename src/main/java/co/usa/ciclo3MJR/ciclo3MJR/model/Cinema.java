@@ -20,31 +20,26 @@ public class Cinema implements Serializable {
     private String description;
     private Integer category;
 
-/*    @ManyToOne
+    //agrego la categoria en cinema
+    @ManyToOne
     @JoinColumn(name = "categoriaId")
     //Se ignora el campo cinemas
-    @JsonIgnoreProperties("Cinemas")
+    @JsonIgnoreProperties("cinemas") //como se llama en el archivo categoria
     private Categoria categoria;
 
-    @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "cinema")
-    @JsonIgnoreProperties({"Cinemas","Clientes"})
-    public List<Mensaje> mensajes;
+    //mensajes
+    @ManyToOne
+    @JoinColumn(name = "mensajesid")
+    //Se ignora el campo cinemas
+    @JsonIgnoreProperties("cinemasm") //como se llama en el archivo mensaje
+    private Mensaje mensaje;
 
-    @OneToMany(cascade={CascadeType.PERSIST},mappedBy = "cinema")
-    @JsonIgnoreProperties({"Cinemas","Mensajes"})
-    private List<Reserva> reservas;*/
-
-    @JoinColumn(name="categoriaId")
-    @JsonIgnoreProperties("cinemas")
-    private Categoria categoria;
-
-    @OneToMany(cascade={CascadeType.PERSIST},mappedBy = "cinema")
-    @JsonIgnoreProperties({"cinema","client"})
-    private List<Mensaje> mensajes;
-
-    @OneToMany(cascade={CascadeType.PERSIST},mappedBy = "cinema")
-    @JsonIgnoreProperties({"cinema","message"})
-    private List<Reserva> reservas;
+    //reservaciones
+    @ManyToOne
+    @JoinColumn(name = "reservacionesid")
+    //Se ignora el campo cinemas
+    @JsonIgnoreProperties("cinemasr") //como se llama en el archivo
+    private Reserva reserva;
 
     public Integer getId() {
         return id;

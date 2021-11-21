@@ -20,7 +20,7 @@ public class ClienteController {
 
     //Metodo get para obtener todos los elementos con su url
     @GetMapping("/all")
-    public List<Cliente> getCliente(){
+    public List<Cliente> getClientes(){
         return clienteService.getAll();
     }
 

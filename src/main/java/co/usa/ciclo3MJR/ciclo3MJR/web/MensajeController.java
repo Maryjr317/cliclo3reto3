@@ -20,7 +20,7 @@ public class MensajeController {
 
     //Metodo get para obtener todos los elementos con su url
     @GetMapping("/all")
-    public List<Mensaje> getMensaje(){
+    public List<Mensaje> getMensajes(){
         return mensajeService.getAll();
     }
 

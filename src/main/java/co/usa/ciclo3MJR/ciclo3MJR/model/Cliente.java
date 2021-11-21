@@ -19,21 +19,21 @@ public class Cliente implements Serializable {
     private String password;
     private Integer age;
 
-    /*@OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "Cliente")
-    @JsonIgnoreProperties("Clientes")
-    public List<Cliente> clientes;
+    //mensajes
+    @ManyToOne
+    @JoinColumn(name = "mensajesidm")
+    //Se ignora el campo cinemas
+    @JsonIgnoreProperties("cinemasmc") //como se llama en el archivo
+    private Mensaje mensaje;
 
-    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "Cliente")
-    @JsonIgnoreProperties("Clientes")
-    public List<Reserva> reservas;*/
+    //reservaciones
+    @ManyToOne
+    @JoinColumn(name = "reservacionesidm")
+    //Se ignora el campo cinemas
+    @JsonIgnoreProperties("cinemasrc") //como se llama en el archivo
+    private Reserva reserva;
 
-    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "client")
-    @JsonIgnoreProperties("client")
-    public List<Mensaje> mensajes;
 
-    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "client")
-    @JsonIgnoreProperties("client")
-    public List<Reserva> reservas;
 
     public Integer getId() {
         return id;
