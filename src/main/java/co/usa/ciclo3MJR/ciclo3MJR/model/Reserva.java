@@ -14,24 +14,28 @@ import java.util.List;
 public class Reserva {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Integer idReservation;
     private Date startDate;
     private Date devolutionDate;
 
-    @OneToMany(cascade = {CascadeType.PERSIST},mappedBy ="reserva")
-    @JsonIgnoreProperties("reserva")
-    private List<Cinema> cinemasr;
+    private String status = "created";
+    //cinema
+    @ManyToOne
+    @JoinColumn(name = "id")
+    @JsonIgnoreProperties({"reservations"})
+    private Cinema cinema;
 
-    @OneToMany(cascade = {CascadeType.PERSIST},mappedBy ="reserva")
-    @JsonIgnoreProperties("reserva")
-    private List<Cinema> cinemasrc;
+    @ManyToOne
+    @JoinColumn(name="idClient")
+    @JsonIgnoreProperties({"reservations","messages"})
+    private Cliente client;
 
-    public Integer getId() {
-        return id;
+    public Integer getIdReservation() {
+        return idReservation;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setIdReservation(Integer idReservation) {
+        this.idReservation = idReservation;
     }
 
     public Date getStartDate() {
@@ -50,19 +54,27 @@ public class Reserva {
         this.devolutionDate = devolutionDate;
     }
 
-    public List<Cinema> getCinemasr() {
-        return cinemasr;
+    public String getStatus() {
+        return status;
     }
 
-    public void setCinemasr(List<Cinema> cinemasr) {
-        this.cinemasr = cinemasr;
+    public void setStatus(String status) {
+        this.status = status;
     }
 
-    public List<Cinema> getCinemasrc() {
-        return cinemasrc;
+    public Cinema getCinema() {
+        return cinema;
     }
 
-    public void setCinemasrc(List<Cinema> cinemasrc) {
-        this.cinemasrc = cinemasrc;
+    public void setCinema(Cinema cinema) {
+        this.cinema = cinema;
+    }
+
+    public Cliente getClient() {
+        return client;
+    }
+
+    public void setClient(Cliente client) {
+        this.client = client;
     }
 }

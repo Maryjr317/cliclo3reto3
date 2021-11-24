@@ -12,23 +12,27 @@ import java.util.List;
 public class Mensaje {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Integer idMessage;
     private String messageText;
 
-    @OneToMany(cascade = {CascadeType.PERSIST},mappedBy ="mensaje")
-    @JsonIgnoreProperties("mensaje")
-    private List<Cinema> cinemasm;
+    //cinema
+    @ManyToOne
+    @JoinColumn(name = "id")
+    @JsonIgnoreProperties({"messages", "reservations"})
+    private Cinema cinema;
 
-    @OneToMany(cascade = {CascadeType.PERSIST},mappedBy ="mensaje")
-    @JsonIgnoreProperties("mensaje")
-    private List<Cinema> cinemasmc;
+    //cliente
+    @ManyToOne
+    @JoinColumn(name="idClient")
+    @JsonIgnoreProperties({"messages","reservations"})
+    private Cliente client;
 
-    public Integer getId() {
-        return id;
+    public Integer getIdMessage() {
+        return idMessage;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setIdMessage(Integer idMessage) {
+        this.idMessage = idMessage;
     }
 
     public String getMessageText() {
@@ -39,19 +43,19 @@ public class Mensaje {
         this.messageText = messageText;
     }
 
-    public List<Cinema> getCinemasm() {
-        return cinemasm;
+    public Cinema getCinema() {
+        return cinema;
     }
 
-    public void setCinemasm(List<Cinema> cinemasm) {
-        this.cinemasm = cinemasm;
+    public void setCinema(Cinema cinema) {
+        this.cinema = cinema;
     }
 
-    public List<Cinema> getCinemasmc() {
-        return cinemasmc;
+    public Cliente getClient() {
+        return client;
     }
 
-    public void setCinemasmc(List<Cinema> cinemasmc) {
-        this.cinemasmc = cinemasmc;
+    public void setClient(Cliente client) {
+        this.client = client;
     }
 }

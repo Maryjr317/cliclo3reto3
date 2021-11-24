@@ -18,28 +18,23 @@ public class Cinema implements Serializable {
     private String name;
     private Integer capacity;
     private String description;
-    private Integer category;
 
     //agrego la categoria en cinema
     @ManyToOne
-    @JoinColumn(name = "categoriaId")
+    @JoinColumn(name = "idClient")
     //Se ignora el campo cinemas
     @JsonIgnoreProperties("cinemas") //como se llama en el archivo categoria
-    private Categoria categoria;
+    private Categoria category;
 
-    //mensajes
-    @ManyToOne
-    @JoinColumn(name = "mensajesid")
-    //Se ignora el campo cinemas
-    @JsonIgnoreProperties("cinemasm") //como se llama en el archivo mensaje
-    private Mensaje mensaje;
+    //union con la tabla mensaje
+    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "cinema")
+    @JsonIgnoreProperties({"cinemas"})
+    private List<Mensaje> messages;
 
-    //reservaciones
-    @ManyToOne
-    @JoinColumn(name = "reservacionesid")
-    //Se ignora el campo cinemas
-    @JsonIgnoreProperties("cinemasr") //como se llama en el archivo
-    private Reserva reserva;
+    //relacion con la tabla reservacion
+    @OneToMany(cascade={CascadeType.PERSIST},mappedBy = "cinema")
+    @JsonIgnoreProperties({"cinemas","message"})
+    private List<Reserva> reservations;
 
     public Integer getId() {
         return id;
@@ -81,35 +76,27 @@ public class Cinema implements Serializable {
         this.description = description;
     }
 
-    public Integer getCategory() {
+    public Categoria getCategory() {
         return category;
     }
 
-    public void setCategory(Integer category) {
+    public void setCategory(Categoria category) {
         this.category = category;
     }
 
-    public Categoria getCategoria() {
-        return categoria;
+    public List<Mensaje> getMessages() {
+        return messages;
     }
 
-    public void setCategoria(Categoria categoria) {
-        this.categoria = categoria;
+    public void setMessages(List<Mensaje> messages) {
+        this.messages = messages;
     }
 
-    public Mensaje getMensaje() {
-        return mensaje;
+    public List<Reserva> getReservations() {
+        return reservations;
     }
 
-    public void setMensaje(Mensaje mensaje) {
-        this.mensaje = mensaje;
-    }
-
-    public Reserva getReserva() {
-        return reserva;
-    }
-
-    public void setReserva(Reserva reserva) {
-        this.reserva = reserva;
+    public void setReservations(List<Reserva> reservations) {
+        this.reservations = reservations;
     }
 }

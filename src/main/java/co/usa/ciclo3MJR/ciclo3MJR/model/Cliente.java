@@ -13,40 +13,30 @@ import java.util.List;
 public class Cliente implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-    private String name;
+    private Integer idClient;
     private String email;
     private String password;
+    private String name;
     private Integer age;
 
     //mensajes
-    @ManyToOne
-    @JoinColumn(name = "mensajesidm")
-    //Se ignora el campo cinemas
-    @JsonIgnoreProperties("cinemasmc") //como se llama en el archivo
-    private Mensaje mensaje;
+    @OneToMany(cascade ={CascadeType.PERSIST},mappedBy="client")
+    @JsonIgnoreProperties("client")
+    public List<Mensaje> messages;
 
-    //reservaciones
-    @ManyToOne
-    @JoinColumn(name = "reservacionesidm")
-    //Se ignora el campo cinemas
-    @JsonIgnoreProperties("cinemasrc") //como se llama en el archivo
-    private Reserva reserva;
+    //Reservas
+    @OneToMany(cascade ={CascadeType.PERSIST},mappedBy="client")
+    @JsonIgnoreProperties("client")
+    public List<Reserva> reservations;
 
-    public Integer getId() {
-        return id;
+    private String score ;
+
+    public Integer getIdClient() {
+        return idClient;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+    public void setIdClient(Integer idClient) {
+        this.idClient = idClient;
     }
 
     public String getEmail() {
@@ -65,6 +55,14 @@ public class Cliente implements Serializable {
         this.password = password;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public Integer getAge() {
         return age;
     }
@@ -73,19 +71,27 @@ public class Cliente implements Serializable {
         this.age = age;
     }
 
-    public Mensaje getMensaje() {
-        return mensaje;
+    public List<Mensaje> getMessages() {
+        return messages;
     }
 
-    public void setMensaje(Mensaje mensaje) {
-        this.mensaje = mensaje;
+    public void setMessages(List<Mensaje> messages) {
+        this.messages = messages;
     }
 
-    public Reserva getReserva() {
-        return reserva;
+    public List<Reserva> getReservations() {
+        return reservations;
     }
 
-    public void setReserva(Reserva reserva) {
-        this.reserva = reserva;
+    public void setReservations(List<Reserva> reservations) {
+        this.reservations = reservations;
+    }
+
+    public String getScore() {
+        return score;
+    }
+
+    public void setScore(String score) {
+        this.score = score;
     }
 }
